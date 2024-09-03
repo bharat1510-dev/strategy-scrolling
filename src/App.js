@@ -1,23 +1,28 @@
 import logo from './logo.svg';
+import Navbar from './components/Navbar';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import News from './components/News';
+import LoadingBar from 'react-top-loading-bar'
 
 function App() {
+  const progress = ()=>{}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div className="App" >
+      <LoadingBar
+        color='#f11946'
+        progress={progress}
+        
+      />
+      <Router>
+       <Navbar title="Registation" home="Home" about="About" coustomer_service="Catagory"/>
+       <News pageSize={5} page={1} />
+       </Router>
     </div>
   );
 }
